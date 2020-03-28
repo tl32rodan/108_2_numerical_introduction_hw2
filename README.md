@@ -1,3 +1,1 @@
-# numeric_introduction_hw2
-# numeric_introduction_hw2
 # 108_2_numerical_introduction_hw2
