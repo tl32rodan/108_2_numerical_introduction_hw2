@@ -1,0 +1,44 @@
+def bisection(func,l=0,r=1, criteria=1E-4):
+    assert func(l)*func(r) < 0 and r >= l, 'Illegal interval'
+    
+    relative_errors=[]
+    # Add initial error=100%
+    relative_errors.append(1.00)
+    
+    while(abs(relative_errors[-1]) > criteria):
+        mid = (l+r)/2
+        
+        if(func(mid)*func(l) < 0):
+            r = mid
+        elif(func(mid)*func(r) < 0):
+            l = mid
+        else:
+            raise PrecisionError('Underflow when finding mid point')
+        
+        # Relative error in this iteration
+        relative_errors.append( abs(l-r) )
+        
+    return relative_errors
+
+def false_position(func,l=0,r=1, criteria=1E-4):
+    assert func(l)*func(r) < 0 and r >= l, 'Illegal interval'
+    
+    relative_errors=[]
+    # Add initial error=100%
+    relative_errors.append(1.00)
+    
+    while(abs(relative_errors[-1]) > criteria):
+        # p is the point that determined by false position method
+        p = r - func()
+        
+        if(func(mid)*func(l) < 0):
+            r = mid
+        elif(func(mid)*func(r) < 0):
+            l = mid
+        else:
+            raise PrecisionError('Underflow when finding mid point')
+        
+        # Relative error in this iteration
+        relative_errors.append( abs(l-r) )
+        
+    return relative_errors
